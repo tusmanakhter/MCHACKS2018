@@ -12,12 +12,5 @@
     "permissions": [
       "activeTab",
       "storage"
-    ],
-    "content_scripts": [
-        {
-            "matches": ["*://*/*"],
-            "js": ["content_script.js"],
-            "run_at": "document_end"
-        }
     ]
 }

@@ -1,25 +1,29 @@
-// window.addEventListener('load', function load(event) {
-//   var matosifyButton = document.getElementById('matosify');
-//   matosifyButton.addEventListener('click', function () {matosify();});
-// });
+function getCurrentTabUrl(callback) {
+  var queryInfo = {
+    active: true,
+    currentWindow: true
+  };
 
-// function matosify () {
-//   var elements = document.getElementsByTagName('*');
-  
-//   for (var i = 0; i < elements.length; i++) {
-//       var element = elements[i];
-  
-//       for (var j = 0; j < element.childNodes.length; j++) {
-//           var node = element.childNodes[j];
-  
-//           if (node.nodeType === 3) {
-//               var text = node.nodeValue;
-//               var replacedText = text.replace(/[https]/gi, '[httttttttp]');
-  
-//               if (replacedText !== text) {
-//                   element.replaceChild(document.createTextNode(replacedText), node);
-//               }
-//           }
-//       }
-//   }
-// };
+  chrome.tabs.query(queryInfo, (tabs) => {
+    var tab = tabs[0];
+    var url = tab.url;
+    console.assert(typeof url == 'string', 'tab.url should be a string');
+    callback(url);
+  });
+}
+
+function matosify() {
+  chrome.tabs.executeScript({
+    file: 'content_script.js'
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  getCurrentTabUrl((url) => {
+    var button = document.getElementById('matosify');
+
+    button.addEventListener('click', () => {
+      matosify();
+    });
+  });
+});
