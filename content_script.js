@@ -29,8 +29,23 @@ for (var i = 0; i < elements.length; i++) {
 }
 
 function buildWord(text) {
-    if (/[aeiou]/gi.test(text)) {
-        console.log(text);
+    var splitted = text.split(/\s+/);
+    for (var i = 0; i < splitted.length; i++) {
+        var word = splitted[i];
+        if (/[aeiou]/gi.test(word)) {
+            word = word.replace(/a/g, 'aa');
+            word = word.replace(/e/g, 'ee');
+            word = word.replace(/i/g, 'ii');
+            word = word.replace(/o/g, 'oo');
+            word = word.replace(/u/g, 'uu');
+            word = word.replace(/A/g, 'AA');
+            word = word.replace(/E/g, 'EE');
+            word = word.replace(/I/g, 'II');
+            word = word.replace(/O/g, 'OO');
+            word = word.replace(/U/g, 'UU');
+            splitted[i] = word;
+        }
     }
-    return text.replace(/hello/gi, 'bye');
+    var combined = splitted.join(" ");
+    return combined;
 }
