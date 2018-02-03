@@ -1,4 +1,15 @@
-var elements = document.getElementsByTagName('*');
+var allElements = document.getElementsByTagName('*');
+
+var elements = [];
+for (element in allElements) {
+    var innerElem = allElements[element];
+    if (innerElem.tagName !== undefined) { 
+        if (innerElem.tagName.toLowerCase() !== "script" && innerElem.tagName.toLowerCase() !== "style") {
+            elements[elements.length] = innerElem;
+        }
+    }
+}
+
 for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
 
@@ -18,5 +29,8 @@ for (var i = 0; i < elements.length; i++) {
 }
 
 function buildWord(text) {
+    if (/[aeiou]/gi.test(text)) {
+        console.log(text);
+    }
     return text.replace(/hello/gi, 'bye');
 }
