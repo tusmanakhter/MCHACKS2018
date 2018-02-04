@@ -83,7 +83,6 @@ function changeBackground() {
 }
 
 function loadAudio() {
-    var myAudio = new Audio();
-    myAudio.src = chrome.extension.getURL('audio/carlosMatosIntro.mp3');
-    myAudio.play();
+    document.body.innerHTML += '<audio id="audio-player" controls="controls" src='+ chrome.extension.getURL('audio/carlosMatosIntro.mp3') + ' type="audio/mpeg">';
+    document.getElementById('audio-player').play();
 }
