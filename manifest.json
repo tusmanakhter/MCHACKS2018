@@ -15,6 +15,7 @@
     ],
     "web_accessible_resources": [
         "images/*.jpg",
-        "images/background/*.png"
+        "images/background/*.png",
+        "audio/*.mp3"
     ]
 }

@@ -30,6 +30,7 @@ for (var i = 0; i < elements.length; i++) {
 
 changeImages();
 changeBackground();
+loadAudio();
 
 function buildWord(text) {
     var splitted = text.split(/\s+/);
@@ -79,4 +80,10 @@ function changeImages() {
 
 function changeBackground() {
     document.body.style.backgroundImage = "url(" + chrome.extension.getURL('images/background/carlos.png') + ")";
+}
+
+function loadAudio() {
+    var myAudio = new Audio();
+    myAudio.src = chrome.extension.getURL('audio/carlosMatosIntro.mp3');
+    myAudio.play();
 }
