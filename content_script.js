@@ -28,6 +28,9 @@ for (var i = 0; i < elements.length; i++) {
     }
 }
 
+changeImages();
+changeBackground();
+
 function buildWord(text) {
     var splitted = text.split(/\s+/);
     for (var i = 0; i < splitted.length; i++) {
@@ -60,4 +63,20 @@ function buildWord(text) {
     }
     var combined = splitted.join(" ");
     return combined;
+}
+
+function changeImages() {         
+    var imageurls = ['images/carlos1.jpg', 'images/carlos2.jpg', 'images/carlos3.jpg', 'images/carlos4.jpg', 'images/carlos5.jpg'];
+    var images = document.getElementsByTagName('img');
+       
+    for (var i = 0; i < images.length; i++) {
+        var height = images[i].height;
+        var width = images[i].width;
+        var number = Math.floor(Math.random() * 5);
+        images[i].src = chrome.extension.getURL(imageurls[number]);
+    }
+}
+
+function changeBackground() {
+    document.body.style.backgroundImage = "url(" + chrome.extension.getURL('images/background/carlos.png') + ")";
 }

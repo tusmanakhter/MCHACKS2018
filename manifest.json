@@ -12,5 +12,9 @@
     "permissions": [
       "activeTab",
       "storage"
+    ],
+    "web_accessible_resources": [
+        "images/*.jpg",
+        "images/background/*.png"
     ]
 }
